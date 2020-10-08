@@ -147,7 +147,7 @@ COPY public.parcours (id, id_stagiaire, parcours) FROM stdin;
 -- Data for Name: stagiaire; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.stagiaire (id, nom, "prénom", avatar, prescripteur, "projet-pro", pourquoi) FROM stdin;
+COPY public.stagiaire (id, nom, "prénom", avatar, prescripteur, "projet-pro", pourquoi, projet, parcours) FROM stdin;
 2	Thomas	Aurélia	asset/aurelia.png	Pôle Emploi	Etre embauchée chez Subteno	Envie de me reconvertir professionnellement dans la conception de logiciel
 4	Gaubert	Alexandre	asset/alexandre.png	Recherche personnelle	Travailler chez Subteno et lancer ma propre entreprise	Retourner dans le domaine du développement informatique
 3	Libor	Alex	asset/alex.png	Pôle Emploi	S'épanouir dans ce domaine	Reconversion professionnelle

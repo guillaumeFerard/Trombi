@@ -38,7 +38,7 @@ sql = SQL()
 sql.requeteSQL()
 
 for num in range(9):
-    #id_student = sql.requeteSQL_course(sql.MyResult[num][0])
+
     sql.requeteSQL()
     list_licorne.append(Student(list_coordonnee[num][0], list_coordonnee[num][1],
     sql.MyResult[num][1], sql.MyResult[num][2], sql.MyResult[num][3], sql.MyResult[num][4], 
