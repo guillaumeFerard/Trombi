@@ -4,7 +4,7 @@ import pygame
 
 class Student(pygame.sprite.Sprite):
     
-    def __init__(self, x, y, name, first_name, avatar, txt_project, course):
+    def __init__(self, x, y, name, first_name, avatar, project, course):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(avatar)
         self.avatar = avatar
@@ -14,5 +14,5 @@ class Student(pygame.sprite.Sprite):
         self.rect.y = y
         self.name = name
         self.first_name = first_name
-        self.txt_projet = txt_project
+        self.project = project
         self.course = course

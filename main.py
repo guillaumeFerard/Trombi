@@ -76,7 +76,7 @@ while running:
                 
                 for avatar in list_licorne:
                     if avatar.rect.collidepoint(event.pos):
-                        profile.launch_profile(avatar.avatar, avatar.name, avatar.first_name, avatar.txt_project, avatar.course)
+                        profile.launch_profile(avatar.avatar, avatar.name, avatar.first_name, avatar.project, avatar.course)
                 
 
             else:

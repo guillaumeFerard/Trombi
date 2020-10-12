@@ -55,5 +55,4 @@ class SQL():
             "SELECT * " +
             "FROM stagiaire " )
         self.MyResult = self.ExecuteQuery(MyQuery)
-        print(self.MyResult)
     
