@@ -57,14 +57,3 @@ class SQL():
         self.MyResult = self.ExecuteQuery(MyQuery)
         print(self.MyResult)
     
-    def requeteSQL_course(self, stagiaire):
-        
-        self.MyConnection = self.DBConnect()
-
-        MyQuery = (
-            "SELECT parcours.parcours " +
-            "FROM parcours " +
-            f"WHERE id_stagiaire = {stagiaire}")
-        self.Result = self.ExecuteQuery(MyQuery)
-
-        return self.Result

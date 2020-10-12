@@ -28,10 +28,7 @@ background = pygame.transform.scale(background, (screen_width, screen_height))
 
 list_licorne = []
 
-##############################
-#   Recuperation des avatars #
-#   pour Laura               #
-##############################
+
 list_coordonnee = [[100, 50],  [420, 50],  [740, 50],
                  [100, 276], [420, 276], [740, 276],
                  [100, 502], [420, 502], [740, 502]]
@@ -40,11 +37,10 @@ sql = SQL()
 sql.requeteSQL()
 
 for num in range(9):
-    #id_student = sql.requeteSQL_course(sql.MyResult[num][0])
     sql.requeteSQL()
     list_licorne.append(Student(list_coordonnee[num][0], list_coordonnee[num][1],
-    sql.MyResult[num][1], sql.MyResult[num][2], sql.MyResult[num][3], sql.MyResult[num][4], 
-    sql.MyResult[num][5], sql.MyResult[num][6], sql.MyResult[num][7], sql.MyResult[num][8]))
+    sql.MyResult[num][1], sql.MyResult[num][2], sql.MyResult[num][3],
+    sql.MyResult[num][4], sql.MyResult[num][5]))
 
 # Instance de profile
 profile = Profile(screen_width, screen_height)
@@ -63,7 +59,6 @@ while running:
 
         for avatar in list_licorne:
             screen.blit(avatar.image, avatar.rect)
-            #print(avatar.job)
 
     # update le screen
     pygame.display.flip()

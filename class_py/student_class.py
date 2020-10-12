@@ -1,11 +1,10 @@
 # coding: utf-8
-
 import pygame
 
 
 class Student(pygame.sprite.Sprite):
     
-    def __init__(self, x, y, name, first_name, avatar, prescriber, project, why, txt_project, course):
+    def __init__(self, x, y, name, first_name, avatar, txt_project, course):
         pygame.sprite.Sprite.__init__(self)
         self.image = pygame.image.load(avatar)
         self.avatar = avatar
@@ -15,8 +14,5 @@ class Student(pygame.sprite.Sprite):
         self.rect.y = y
         self.name = name
         self.first_name = first_name
-        self.prescriber = prescriber
-        self.project = project
-        self.txt_project = txt_project
-        self.why = why
+        self.txt_projet = txt_project
         self.course = course
