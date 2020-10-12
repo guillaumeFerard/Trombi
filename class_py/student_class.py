@@ -1,3 +1,5 @@
+# coding: utf-8
+
 import pygame
 
 
@@ -15,6 +17,6 @@ class Student(pygame.sprite.Sprite):
         self.first_name = first_name
         self.prescriber = prescriber
         self.project = project
-        self.txt_projet = txt_project
+        self.txt_project = txt_project
         self.why = why
         self.course = course

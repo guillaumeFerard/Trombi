@@ -1,3 +1,5 @@
+# coding: utf-8
+
 import pygame
 import math
 
@@ -14,7 +16,7 @@ pygame.init()
 screen_width = 1050
 screen_height = 750
 
-# generer la fenetre du jeu
+# generer la fenêtre du jeu
 pygame.display.set_caption("Trombinoscope")
 screen = pygame.display.set_mode((screen_width, screen_height))
 
@@ -38,7 +40,7 @@ sql = SQL()
 sql.requeteSQL()
 
 for num in range(9):
-
+    #id_student = sql.requeteSQL_course(sql.MyResult[num][0])
     sql.requeteSQL()
     list_licorne.append(Student(list_coordonnee[num][0], list_coordonnee[num][1],
     sql.MyResult[num][1], sql.MyResult[num][2], sql.MyResult[num][3], sql.MyResult[num][4], 
@@ -79,7 +81,7 @@ while running:
                 
                 for avatar in list_licorne:
                     if avatar.rect.collidepoint(event.pos):
-                        profile.launch_profile(avatar.avatar, avatar.name, avatar.first_name, avatar.txt_projet, avatar.course)
+                        profile.launch_profile(avatar.avatar, avatar.name, avatar.first_name, avatar.txt_project, avatar.course)
                 
 
             else:

@@ -20,8 +20,8 @@ class SQL():
                 host="localhost",
                 database="Trombi",
                 user="postgres",
-                password="himself",
-                port = "5433"
+                password="python",
+                port="5432"
             )
         except(Exception, psycopg2.DatabaseError) as Error:
             # error
@@ -55,4 +55,16 @@ class SQL():
             "SELECT * " +
             "FROM stagiaire " )
         self.MyResult = self.ExecuteQuery(MyQuery)
+        print(self.MyResult)
     
+    def requeteSQL_course(self, stagiaire):
+        
+        self.MyConnection = self.DBConnect()
+
+        MyQuery = (
+            "SELECT parcours.parcours " +
+            "FROM parcours " +
+            f"WHERE id_stagiaire = {stagiaire}")
+        self.Result = self.ExecuteQuery(MyQuery)
+
+        return self.Result
