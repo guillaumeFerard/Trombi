@@ -48,11 +48,11 @@ class SQL():
         return self.MyResult
 
     def requeteSQL(self) :
-        
+
         self.MyConnection = self.DBConnect()
 
         MyQuery = (
             "SELECT * " +
             "FROM stagiaire " )
         self.MyResult = self.ExecuteQuery(MyQuery)
-    
+

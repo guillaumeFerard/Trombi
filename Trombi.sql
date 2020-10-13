@@ -5,6 +5,8 @@
 -- Dumped from database version 12.4
 -- Dumped by pg_dump version 12.4
 
+-- Started on 2020-10-13 10:38:22
+
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
@@ -21,41 +23,7 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: parcours; Type: TABLE; Schema: public; Owner: postgres
---
-
-CREATE TABLE public.parcours (
-    id integer NOT NULL,
-    id_stagiaire integer,
-    parcours character varying
-);
-
-
-ALTER TABLE public.parcours OWNER TO postgres;
-
---
--- Name: parcours_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
---
-
-CREATE SEQUENCE public.parcours_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
-ALTER TABLE public.parcours_id_seq OWNER TO postgres;
-
---
--- Name: parcours_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
---
-
-ALTER SEQUENCE public.parcours_id_seq OWNED BY public.parcours.id;
-
-
---
+-- TOC entry 202 (class 1259 OID 16624)
 -- Name: stagiaire; Type: TABLE; Schema: public; Owner: postgres
 --
 
@@ -64,15 +32,15 @@ CREATE TABLE public.stagiaire (
     nom character varying(30) NOT NULL,
     "prénom" character varying(30) NOT NULL,
     avatar character varying NOT NULL,
-    prescripteur character varying NOT NULL,
-    "projet-pro" character varying NOT NULL,
-    pourquoi character varying NOT NULL
+    projet character varying,
+    parcours character varying
 );
 
 
 ALTER TABLE public.stagiaire OWNER TO postgres;
 
 --
+-- TOC entry 203 (class 1259 OID 16630)
 -- Name: stagiaire_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
 --
 
@@ -88,6 +56,8 @@ CREATE SEQUENCE public.stagiaire_id_seq
 ALTER TABLE public.stagiaire_id_seq OWNER TO postgres;
 
 --
+-- TOC entry 2824 (class 0 OID 0)
+-- Dependencies: 203
 -- Name: stagiaire_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
 --
 
@@ -95,13 +65,7 @@ ALTER SEQUENCE public.stagiaire_id_seq OWNED BY public.stagiaire.id;
 
 
 --
--- Name: parcours id; Type: DEFAULT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.parcours ALTER COLUMN id SET DEFAULT nextval('public.parcours_id_seq'::regclass);
-
-
---
+-- TOC entry 2688 (class 2604 OID 16633)
 -- Name: stagiaire id; Type: DEFAULT; Schema: public; Owner: postgres
 --
 
@@ -109,64 +73,27 @@ ALTER TABLE ONLY public.stagiaire ALTER COLUMN id SET DEFAULT nextval('public.st
 
 
 --
--- Data for Name: parcours; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-COPY public.parcours (id, id_stagiaire, parcours) FROM stdin;
-1	2	Etudes en gestion de production assistée par ordinateur
-2	2	Assistante ADV
-3	2	Coordinatrice ordonnancement
-4	2	Assistante bancaire
-5	3	Préparateur commande
-6	3	Pilote d'essai et Data analyst
-7	3	Responsable de rayon
-8	4	Webdesigner 
-9	4	Ministère de la défense
-10	5	Bac Pro SPVL
-11	6	Startech Normandy
-12	6	Web@cademie
-13	6	42
-15	7	Maintenance des parcs éoliens
-16	7	Ingénieur des Mines
-17	7	Master métiers de l'enseignement
-18	7	Professeur d'espagnol
-14	6	Lycée Dumont d'Urville Bac pro Microtechnique
-19	8	Lycée technologique STI2D
-20	8	Formation développeur web/web mobile
-21	8	Emploi en intérim
-22	8	Pas de diplôme
-23	9	Vente (vendeur conseil en magasin)
-24	9	Coach en développement personnel
-25	5	Service civique au SPF
-26	5	Employée postale
-27	5	Assistante d'éducation
-\.
-
-
---
+-- TOC entry 2817 (class 0 OID 16624)
+-- Dependencies: 202
 -- Data for Name: stagiaire; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-COPY public.stagiaire (id, nom, "prénom", avatar, prescripteur, "projet-pro", pourquoi, projet, parcours) FROM stdin;
-2	Thomas	Aurélia	asset/aurelia.png	Pôle Emploi	Etre embauchée chez Subteno	Envie de me reconvertir professionnellement dans la conception de logiciel
-4	Gaubert	Alexandre	asset/alexandre.png	Recherche personnelle	Travailler chez Subteno et lancer ma propre entreprise	Retourner dans le domaine du développement informatique
-3	Libor	Alex	asset/alex.png	Pôle Emploi	S'épanouir dans ce domaine	Reconversion professionnelle
-6	Herbet	Hadrien	asset/hadrien.png	Startech Normandy	M'épanouir dans mon travail et avec les personnes avec qui je travaille, le reste c'est secondaire	Pour décrocher un job dans un domaine qui me plait et dans une boite avec une mentalité qui me correspondrait
-9	Sarratia	Mélanie	asset/melanie.png	Moi-même en réalisant une rechercher sur le net	Faire un métier passion	Car la programmation m'intéressait et je voulais me former à un métier digital
-7	Posada	Javier	asset/javier.png	Ma propre recherche, et pôle emploi	Travailler et continuer à me former comme développeur	Je cherchais un métier intellectuel, créatif et demandé pour les entreprises
-8	Hammel-Cornu	Wilfried	asset/wilfried.png	Orientation par conseillère Pôle-emploi suite à remménagement dans la région	Intégrer une entreprise numérique, locale si possible (Subteno IT) pour monter en compétences et m'épanouir dans ce domaine	Vouloir me lancer et progresser en tant que développeur et notamment côté applicatif, apprendre le Python (beaucoup d'applications possible et en vogue) et, de plus, possibilité d'être diplômé
-5	Busignies	Laura	asset/laura.png	Formateur REUSSIR à Alençon	Etre embauchée chez Subteno	Travailler dans un domaine en constante évolution
+COPY public.stagiaire (id, nom, "prénom", avatar, projet, parcours) FROM stdin;
+2	Thomas	Aurélia	asset/aurelia.png	asset/projet_aurelia.png	asset/parcours_aurelia.png
+3	Libor	Alex	asset/alex.png	asset/projet_alex.png	asset/parcours_alex.png
+8	Hammel-Cornu	Wilfried	asset/wilfried.png	asset/projet_wilfried.png	asset/parcours_wilfried.png
+6	Herbet	Hadrien	asset/hadrien.png	asset/projet_hadrien.png	asset/parcours_hadrien.png
+9	Sarratia	Mélanie	asset/melanie.png	asset/projet_melanie.png	asset/parcours_melanie.png
+7	Posada	Javier	asset/javier.png	asset/projet_javier.png	asset/parcours_javier.png
+5	Busignies	Laura	asset/laura.png	asset/projet_laura.png	asset/parcours_laura.png
+4	Gaubert	Alexandre	asset/alexandre.png	asset/projet_alexandre.png	asset/parcours_alexandre.png
+1	Ferard	Guillaume	asset/guillaume.png	asset/projet_guillaume.png	asset/parcours_guillaume.png
 \.
 
 
 --
--- Name: parcours_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.parcours_id_seq', 27, true);
-
-
---
+-- TOC entry 2825 (class 0 OID 0)
+-- Dependencies: 203
 -- Name: stagiaire_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
@@ -174,14 +101,7 @@ SELECT pg_catalog.setval('public.stagiaire_id_seq', 9, true);
 
 
 --
--- Name: parcours parcours_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.parcours
-    ADD CONSTRAINT parcours_pk PRIMARY KEY (id);
-
-
---
+-- TOC entry 2690 (class 2606 OID 16637)
 -- Name: stagiaire stagiaire_pk; Type: CONSTRAINT; Schema: public; Owner: postgres
 --
 
@@ -189,13 +109,7 @@ ALTER TABLE ONLY public.stagiaire
     ADD CONSTRAINT stagiaire_pk PRIMARY KEY (id);
 
 
---
--- Name: parcours parcours_fk; Type: FK CONSTRAINT; Schema: public; Owner: postgres
---
-
-ALTER TABLE ONLY public.parcours
-    ADD CONSTRAINT parcours_fk FOREIGN KEY (id_stagiaire) REFERENCES public.stagiaire(id);
-
+-- Completed on 2020-10-13 10:38:23
 
 --
 -- PostgreSQL database dump complete

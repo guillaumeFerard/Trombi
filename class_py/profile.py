@@ -17,7 +17,7 @@ class Profile():
 
     def launch_profile(self, avatar, name, first_name, project, parcours):
         """
-            method to get data from student object that willbe display on the screen with the update method
+            method to get data from student object that will be display on the screen with the update method
         """
 
         self.profile_selected = True
@@ -37,11 +37,12 @@ class Profile():
 
     def return_home(self):
         """
-            method to return at select student screen
+            method to return at select screen
         """
 
         self.profile_selected = False
         
+
     def update(self, screen):
         """
             update method to display data on the surface
